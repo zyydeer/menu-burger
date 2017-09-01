@@ -1,0 +1,184 @@
+*,
+*:before,
+*:after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-size: 1em;
+}
+
+#menu-toggle[type="checkbox"]:not(:checked),
+#menu-toggle[type="checkbox"]:checked {
+  display: none;
+}
+
+.menuto-trigger,
+.menuto-burger,
+.menuto-burger:before,
+.menuto-burger:after {
+  position: absolute;
+  top: 1.6em;
+  left: 1.6em;
+  width: 2em;
+  height: 5px;
+  background-color: #282828;
+  border-radius: 2px;
+  cursor: pointer;
+  z-index: 100;
+  -webkit-transition: 0.35s ease;
+  transition: 0.35s ease;
+}
+
+.menuto-trigger {
+  height: 2em;
+  background: none;
+}
+
+.menuto-burger:before {
+  content: "";
+  top: 10px;
+  left: 0;
+}
+.menuto-burger:after {
+  content: "";
+  top: 20px;
+  left: 0;
+}
+
+.menu-body {
+  position: absolute;
+  width: 7em;
+  height: 7em;
+  margin: 0;
+  padding: 0;
+  background-color: #fff;
+  border-bottom-right-radius: 100%;
+  box-shadow: 3px 3px 7px rgba(40, 40, 40, 0.2);
+  z-index: 10;
+  -webkit-animation: shrink 0.35s both;
+          animation: shrink 0.35s both;
+}
+
+.menu-item,
+.item-link {
+  display: none;
+  margin: 4.4em 0 -3.3em -.1em;
+  font-weight: normal;
+  color: #282828;
+  text-decoration: none;
+  text-transform: none;
+  list-style: none;
+  outline: 0;
+}
+
+.menu-item {
+  text-indent: 2em;
+}
+
+.item-link:hover {
+  display: block;
+  width: 0;
+  color: #282828;
+  background-color: #98A392;
+  -webkit-animation: filling 0.3s both;
+          animation: filling 0.3s both;
+}
+
+/*汉堡图标变换*/
+#menu-toggle:checked + .menuto-trigger + .menuto-burger {
+  top: 35px;
+  -webkit-transform: rotate(405deg);
+          transform: rotate(405deg);
+  -webkit-transition: -webkit-transform 0.35s ease;
+  transition: -webkit-transform 0.35s ease;
+  transition: transform 0.35s ease;
+  transition: transform 0.35s ease, -webkit-transform 0.35s ease;
+}
+#menu-toggle:checked + .menuto-trigger + .menuto-burger:before {
+  top: 0;
+  -webkit-transform: rotate(-90deg);
+          transform: rotate(-90deg);
+  -webkit-transition: -webkit-transform 0.35s ease;
+  transition: -webkit-transform 0.35s ease;
+  transition: transform 0.35s ease;
+  transition: transform 0.35s ease, -webkit-transform 0.35s ease;
+}
+#menu-toggle:checked + .menuto-trigger + .menuto-burger:after {
+  top: 0;
+  -webkit-transform: rotate(90deg);
+          transform: rotate(90deg);
+  -webkit-transition: -webkit-transform 0.35s ease;
+  transition: -webkit-transform 0.35s ease;
+  transition: transform 0.35s ease;
+  transition: transform 0.35s ease, -webkit-transform 0.35s ease;
+}
+
+/*菜单展开*/
+#menu-toggle:checked + .menuto-trigger + .menuto-burger + .menu-body {
+  -webkit-animation: expand 1s ease both;
+          animation: expand 1s ease both;
+}
+#menu-toggle:checked + .menuto-trigger ~ .menu-body .menu-item, 
+#menu-toggle:checked + .menuto-trigger ~ .menu-body .item-link {
+  display: block;
+}
+
+.promotion {
+  width: 100vw;
+  height: 100vh;
+  background: linear-gradient(to bottom right, #DDC9A8, #AFB8B3);
+}
+
+@-webkit-keyframes expand {
+  50% {
+    width: 100vw;
+    height: 100vh;
+  }
+  100% {
+    width: 100vw;
+    height: 100vh;
+    border-radius: 0;
+  }
+}
+@keyframes expand {
+  50% {
+    width: 100vw;
+    height: 100vh;
+  }
+  100% {
+    width: 100vw;
+    height: 100vh;
+    border-radius: 0;
+  }
+}
+@-webkit-keyframes shrink {
+  0% {
+    width: 100vw;
+    height: 100vh;
+  }
+}
+@keyframes shrink {
+  0% {
+    width: 100vw;
+    height: 100vh;
+  }
+}
+@-webkit-keyframes filling {
+  50% {
+    width: 0;
+  }
+  100% {
+    width: 100%;
+  }
+}
+@keyframes filling {
+  50% {
+    width: 0;
+  }
+  100% {
+    width: 100%;
+  }
+}
